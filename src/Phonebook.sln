@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phonebook.API", "Phonebook.API\Phonebook.API.csproj", "{8E6D2469-86B0-48BE-9D37-382A7D95C6DF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phonebook.Core", "Phonebook.Core\Phonebook.Core.csproj", "{AE529DB9-3D8A-4DC9-BCD4-CD33CAB67AA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phonebook.Droid", "Phonebook.Droid\Phonebook.Droid.csproj", "{0FFE9CC4-0E8F-4DC2-8361-7C6518E345EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phonebook.iOS", "Phonebook.iOS\Phonebook.iOS.csproj", "{1951433D-04EC-4F2A-B10F-8FDA5E0897C0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8E6D2469-86B0-48BE-9D37-382A7D95C6DF}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{8E6D2469-86B0-48BE-9D37-382A7D95C6DF}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{AE529DB9-3D8A-4DC9-BCD4-CD33CAB67AA3}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{AE529DB9-3D8A-4DC9-BCD4-CD33CAB67AA3}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{0FFE9CC4-0E8F-4DC2-8361-7C6518E345EC}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{0FFE9CC4-0E8F-4DC2-8361-7C6518E345EC}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{0FFE9CC4-0E8F-4DC2-8361-7C6518E345EC}.Debug|iPhoneSimulator.Deploy.0 = Debug|Any CPU
+		{1951433D-04EC-4F2A-B10F-8FDA5E0897C0}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{1951433D-04EC-4F2A-B10F-8FDA5E0897C0}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0AECFF43-5FCE-4126-B9A0-7A8167D4752E}
+	EndGlobalSection
+EndGlobal

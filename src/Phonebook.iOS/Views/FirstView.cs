@@ -1,26 +1,18 @@
-﻿
-using MvvmCross.Binding.BindingContext;
-using MvvmCross.iOS.Views;
-using MvvmCross.iOS.Views.Presenters.Attributes;
+﻿using MvvmCross.Binding.BindingContext;
+using MvvmCross.Platforms.Ios.Presenters.Attributes;
+using MvvmCross.Platforms.Ios.Views;
 using Phonebook.Core.ViewModels;
-using System;
 
 namespace Phonebook.iOS.Views
 {
-    [MvxFromStoryboard]
-    public partial class FirstView : MvxViewController
+    [MvxRootPresentation(WrapInNavigationController = true)]
+    public partial class FirstView : MvxTabBarViewController<FirstViewModel>
     {
-        public FirstView(IntPtr handle) : base(handle)
-        {
-        }
-
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-
-            var set = this.CreateBindingSet<FirstView, FirstViewModel>();
-            //set.Bind(Label).To(vm => vm.Hello);
-            //set.Bind(TextField).To(vm => vm.Hello);
+            var set = this.CreateBindingSet<FirstView, Core.ViewModels.FirstViewModel>();
+            set.Bind(Button).To(vm => vm.ResetTextCommand);
             set.Apply();
         }
     }

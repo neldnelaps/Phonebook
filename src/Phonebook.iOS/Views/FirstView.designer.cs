@@ -7,6 +7,10 @@
 using Foundation;
 using System;
 using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using UIKit;
 
 namespace Phonebook.iOS.Views
 {
@@ -17,20 +21,11 @@ namespace Phonebook.iOS.Views
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton Button { get; set; }
 
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField TextField { get; set; }
-
         void ReleaseDesignerOutlets ()
         {
             if (Button != null) {
                 Button.Dispose ();
                 Button = null;
-            }
-
-            if (TextField != null) {
-                TextField.Dispose ();
-                TextField = null;
             }
         }
     }

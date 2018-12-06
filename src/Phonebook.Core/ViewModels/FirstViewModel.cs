@@ -10,7 +10,7 @@ namespace Phonebook.Core.ViewModels
 
         private void ResetText()
         {
-            Text =  $"{count++} нажатий!";
+            Text = $"{count++} нажатий!";
         }
 
         private string _text = "Нажми меня";

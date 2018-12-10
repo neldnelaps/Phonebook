@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Phonebook.API.Models
 {
-    internal class Name
+    public class Name
     {
-        private string First { get; set; }
-        private string Last { get; set; }
-        private string Title { get; set; }
+        public string First { get; set; }
+        public string Last { get; set; }
+        public string Title { get; set; }
     }
 }

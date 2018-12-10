@@ -1,11 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Phonebook.API.Models
 {
-    internal class ContactResult
+    public class ContactResult
     {
-        private List<Contact> Contacts { get; set; }
+        [JsonProperty("results")]
+        public List<Contact> Contacts { get; set; }
     }
 }

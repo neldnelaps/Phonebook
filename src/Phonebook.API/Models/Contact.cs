@@ -1,14 +1,19 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Phonebook.API.Models
 {
-    internal class Contact
+    public class Contact
     {
-        private Name Name { get; set; }
-        private Picture Image { get; set; }
-        private string Phone { get; set; }
-        private string Email { get; set; }
+        public Name Name { get; set; }
+
+        [JsonProperty("picture")]
+        public Picture Image { get; set; }
+
+        public string Phone { get; set; }
+
+        public string Email { get; set; }
     }
 }

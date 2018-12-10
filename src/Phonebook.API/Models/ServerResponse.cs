@@ -6,9 +6,10 @@ using System.Text;
 
 namespace Phonebook.API.Service
 {
-    class ServerResponse
+    public class ServerResponse
     {
         public HttpStatusCode HttpStatusCode { get; set; }
         public HttpContent HttpContent { get; set; }
+        public string Url { get; set; }
     }
 }

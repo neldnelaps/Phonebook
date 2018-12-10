@@ -16,16 +16,19 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17" ambiguous="YES">
-                    <rect key="frame" x="161.5" y="375.5" width="91" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17" ambiguous="YES" misplaced="YES">
+                    <rect key="frame" x="162" y="28" width="91" height="30"/>
                     <state key="normal" title="Нажми меня">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstItem="17" firstAttribute="centerX" secondItem="2" secondAttribute="centerX" id="ggV-Oc-D58"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>         
+			 <constraints>
+                <constraint firstItem="17" firstAttribute="top" secondItem="2" secondAttribute="top" id="18"/>
+                <constraint firstItem="17" firstAttribute="trailing" secondItem="2" secondAttribute="trailing" id="19"/>
+                <constraint firstItem="17" firstAttribute="bottom" secondItem="2" secondAttribute="bottom" id="20"/>
+                <constraint firstItem="17" firstAttribute="leading" secondItem="2" secondAttribute="leading" id="21"/>
             </constraints>
             <point key="canvasLocation" x="25.5" y="52.5"/>
         </view>

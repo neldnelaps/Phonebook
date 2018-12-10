@@ -10,7 +10,7 @@ namespace Phonebook.Droid
         , MainLauncher = true
         , NoHistory = true
         , ScreenOrientation = ScreenOrientation.Portrait)]
-    public class SplashScreen : MvxSplashScreenActivity<MvxAndroidSetup<Core.App>, Core.App>
+    public class SplashScreen : MvxSplashScreenActivity<Setup, Core.App>
     {
         public SplashScreen()
              : base(Resource.Layout.SplashScreen)

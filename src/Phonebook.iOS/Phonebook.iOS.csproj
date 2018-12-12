@@ -4,6 +4,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProjectGuid>{101E3060-8799-4119-8A7A-4F86A01C0C84}</ProjectGuid>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{edc1b0fa-90cd-4038-8fad-98fe74adb368}</TemplateGuid>
     <OutputType>Exe</OutputType>
@@ -63,8 +64,26 @@
     <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FFImageLoading, Version=2.4.4.859, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.4.4.859\lib\Xamarin.iOS10\FFImageLoading.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Platform, Version=2.4.4.859, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.4.4.859\lib\Xamarin.iOS10\FFImageLoading.Platform.dll</HintPath>
+    </Reference>
     <Reference Include="MvvmCross, Version=6.2.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmCross.6.2.2\lib\xamarinios10\MvvmCross.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Core, Version=5.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmCross.Core.5.7.0\lib\Xamarin.iOS10\MvvmCross.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.iOS, Version=5.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmCross.Core.5.7.0\lib\Xamarin.iOS10\MvvmCross.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Platform, Version=5.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmCross.Platform.5.7.0\lib\Xamarin.iOS10\MvvmCross.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Platform.iOS, Version=5.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmCross.Platform.5.7.0\lib\Xamarin.iOS10\MvvmCross.Platform.iOS.dll</HintPath>
     </Reference>
     <Reference Include="netstandard" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -74,6 +93,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
+    <Reference Include="WebP.Touch, Version=1.0.6628.22311, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebP.Touch.1.0.8\lib\Xamarin.iOS10\WebP.Touch.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
@@ -126,8 +148,11 @@
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <InterfaceDefinition Include="Views\FirstView.xib" />
+    <InterfaceDefinition Include="Views\Listitem.xib" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LinkerPleaseInclude.cs" />
@@ -137,6 +162,10 @@
     <Compile Include="Views\FirstView.cs" />
     <Compile Include="Views\FirstView.designer.cs">
       <DependentUpon>FirstView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Listitem.cs" />
+    <Compile Include="Views\Listitem.designer.cs">
+      <DependentUpon>Listitem.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

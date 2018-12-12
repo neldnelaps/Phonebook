@@ -7,25 +7,29 @@
 using Foundation;
 using System;
 using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UIKit;
 
 namespace Phonebook.iOS.Views
 {
-    [Register ("FirstView")]
-    partial class FirstView
+    [Register ("Listitem")]
+    partial class Listitem
     {
         [Outlet]
+        FFImageLoading.Cross.MvxCachedImageView imageView { get; set; }
+
+        [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITableView tableView { get; set; }
+        UIKit.UILabel Name { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (tableView != null) {
-                tableView.Dispose ();
-                tableView = null;
+            if (imageView != null) {
+                imageView.Dispose ();
+                imageView = null;
+            }
+
+            if (Name != null) {
+                Name.Dispose ();
+                Name = null;
             }
         }
     }

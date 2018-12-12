@@ -2,43 +2,65 @@
 using MvvmCross.ViewModels;
 using System.Threading.Tasks;
 using Phonebook.API.Service;
+using Phonebook.Core.ViewModels.Item;
 
-using System.Linq;
 using System;
 
 namespace Phonebook.Core.ViewModels
 {
     public class FirstViewModel : MvxViewModel
     {
-        public IMvxCommand ResetTextCommand => new MvxCommand(ResetText);
-        private string _text = "Нажми меня";
-        private readonly int count = 10;
-        private int page = 1;
+        private readonly int _count = 10;
+        private int _page = 1;
 
-        readonly IContactService СontactService;
+        private IMvxCommand _refreshCommand;
+        public IMvxCommand RefreshCommand => _refreshCommand ?? (_refreshCommand = new MvxAsyncCommand(UpdateContacts));
 
-        public FirstViewModel(IContactService contactService)
+        private bool _isRefreshing;
+        public bool IsRefreshing
         {
-            СontactService = contactService;
+            get { return _isRefreshing; }
+            set { SetProperty(ref _isRefreshing, value); }
         }
 
-        private async void ResetText()
+        private string _text = "";
+        public string Text
         {
+            get { return _text; }
+            set { SetProperty(ref _text, value); }
+        }
+
+        private MvxObservableCollection<Items> _items;
+        public MvxObservableCollection<Items> Items
+        {
+            get { return _items; }
+            set { SetProperty(ref _items, value); }
+        }
+
+        readonly IContactService _contactService;   
+        public FirstViewModel(IContactService contactService)
+        {
+            _contactService = contactService;
+            Items = new MvxObservableCollection<Items>();
+        }
+
+        private async Task UpdateContacts()
+        {
+            IsRefreshing = true;
             await GettingContacts();
+            IsRefreshing = false;      
         }
 
         private async Task GettingContacts()
         {
             try
             {
-                var result = await СontactService.GetContacts(count, page).ConfigureAwait(false);
-                page++;
-                string strContacts = "";
-                foreach (var item in result.Contacts)
-                {
-                    strContacts += $"{item.Name.Last.ToString()} {item.Name.First}\n";
-                }
-                Text = strContacts;
+                var result = await _contactService.GetContacts(_count, _page).ConfigureAwait(false);
+                if (result == null)
+                    return;
+                _page++;
+                foreach (var contact in result.Contacts)
+                    Items.Add(new Items(contact));
             }
             catch (Exception ex)
             {
@@ -46,17 +68,10 @@ namespace Phonebook.Core.ViewModels
             }
         }
 
-        private async Task<API.Models.ContactResult> GetContacts()
+        public override void ViewAppeared()
         {
-            var listContact = await СontactService.GetContacts(10, 1);
-            return listContact;
-        }
-
-
-        public string Text
-        {
-            get { return _text; }
-            set { SetProperty(ref _text, value); }
+            base.ViewAppeared();
+            Task.Run(GettingContacts);
         }
     }
 }

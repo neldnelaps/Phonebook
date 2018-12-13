@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Phonebook.Core.ViewModels
 {
-    class ContactViewModel
+    internal class ContactViewModel
     {
     }
 }

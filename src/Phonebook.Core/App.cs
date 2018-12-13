@@ -1,7 +1,8 @@
 ﻿using MvvmCross;
 using MvvmCross.ViewModels;
+
 using Phonebook.API.Service;
-using Phonebook.Core.ViewModels;
+using Phonebook.Core.ViewModels.Contacts;
 
 namespace Phonebook.Core
 {
@@ -10,12 +11,12 @@ namespace Phonebook.Core
         public override void Initialize()
         {
             Registration();
-            RegisterAppStart<FirstViewModel>();
+            RegisterAppStart<ContactsViewModel>();
         }
 
         private void Registration()
         {
-             Mvx.IoCProvider.RegisterType<IContactService, ContactService>();
+            Mvx.IoCProvider.RegisterType<IContactService, ContactService>();
         }
 
     }

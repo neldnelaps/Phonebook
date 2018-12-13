@@ -25,7 +25,7 @@ namespace Phonebook.API.Service
             return SendAsync(url, httpContent);
         }
 
-        async Task<ServerResponse> SendAsync(string url, HttpContent httpContent = null)
+        private async Task<ServerResponse> SendAsync(string url, HttpContent httpContent = null)
         {
             using (var httpRequestMessage = new HttpRequestMessage(httpContent == null ? HttpMethod.Get : HttpMethod.Post, url) { Content = httpContent })
             {

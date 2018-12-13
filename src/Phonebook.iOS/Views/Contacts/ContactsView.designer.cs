@@ -12,10 +12,10 @@ using System.Linq;
 using System.Text;
 using UIKit;
 
-namespace Phonebook.iOS.Views
+namespace Phonebook.iOS.Views.Contacts
 {
-    [Register ("FirstView")]
-    partial class FirstView
+    [Register ("ContactsView")]
+    partial class ContactsView
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]

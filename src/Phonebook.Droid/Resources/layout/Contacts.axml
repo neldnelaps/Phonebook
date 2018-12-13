@@ -9,6 +9,7 @@
 		android:layout_width="match_parent"
 		local:MvxBind="Refreshing IsRefreshing; RefreshCommand RefreshCommand">	
 		 <MvvmCross.Droid.Support.V7.RecyclerView.MvxRecyclerView
+			android:id="@+id/mvxRecyclerView"
 			android:orientation="vertical"
 			android:layout_width="fill_parent"
 			android:layout_height="fill_parent"

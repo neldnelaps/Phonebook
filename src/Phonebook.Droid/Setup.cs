@@ -1,6 +1,8 @@
 ﻿using MvvmCross;
 using MvvmCross.Platforms.Android.Core;
 using Phonebook.API.Service;
+using Phonebook.Core.Dialog;
+using Phonebook.Droid.Dialog;
 using Xamarin.Android.Net;
 
 namespace Phonebook.Droid
@@ -11,6 +13,7 @@ namespace Phonebook.Droid
         {
             base.InitializeFirstChance();
             Mvx.IoCProvider.RegisterSingleton<IConnectionService>(() => new ConnectionService(new AndroidClientHandler()));
+            Mvx.IoCProvider.RegisterType<IUserDialogs>(() => new UserDialogs());
         }
     }
 }

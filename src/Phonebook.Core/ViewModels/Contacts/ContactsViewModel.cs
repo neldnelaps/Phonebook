@@ -13,50 +13,62 @@ namespace Phonebook.Core.ViewModels.Contacts
 {
     public class ContactsViewModel : MvxViewModel
     {
+        #region Fields
         private readonly int _count = 10;
         private int _page = 1;
+        #endregion
 
+        #region Commands
         private IMvxCommand _refreshCommand;
         public IMvxCommand RefreshCommand => _refreshCommand ?? (_refreshCommand = new MvxAsyncCommand(UpdateContacts));
 
         private IMvxCommand _gettingCommand;
         public IMvxCommand GettingContactsCommand => _gettingCommand ?? (_gettingCommand = new MvxAsyncCommand(GettingContacts));
+        #endregion
+
+        #region Properties
 
         private bool _isRefreshing;
         public bool IsRefreshing
         {
             get => _isRefreshing;
-            set => SetProperty(ref _isRefreshing, value); 
+            set => SetProperty(ref _isRefreshing, value);
         }
-
         private MvxObservableCollection<Item.ItemContact> _items;
         public MvxObservableCollection<Item.ItemContact> Items
         {
-            get => _items; 
-            set => SetProperty(ref _items, value); 
+            get => _items;
+            set => SetProperty(ref _items, value);
         }
+        #endregion
 
-        private readonly IContactService _contactService;   
+        #region Services
+        private readonly IContactService ContactService;
+        #endregion
+
+        #region Constructors
         public ContactsViewModel(IContactService contactService)
         {
-            _contactService = contactService;
+            ContactService = contactService;
             Items = new MvxObservableCollection<ItemContact>();
         }
+        #endregion
 
+        #region Private
         private async Task UpdateContacts()
         {
             IsRefreshing = true;
             _page = 1;
             Items.Clear();
             await GettingContacts();
-            IsRefreshing = false;      
+            IsRefreshing = false;
         }
 
         private async Task GettingContacts()
         {
             try
             {
-                var result = await _contactService.GetContacts(_count, _page).ConfigureAwait(false);
+                var result = await ContactService.GetContacts(_count, _page).ConfigureAwait(false);
                 if (result == null)
                     Mvx.IoCProvider.Resolve<IUserDialogs>().Alert("Contact list is empty!");
                 _page++;
@@ -70,12 +82,17 @@ namespace Phonebook.Core.ViewModels.Contacts
                 Mvx.IoCProvider.Resolve<IUserDialogs>().Alert(ex.Message);
             }
         }
+        #endregion
 
-        public override void ViewAppeared()
+        #region Protected
+        #endregion
+
+        #region Public
+        public override void ViewCreated()
         {
-            base.ViewAppeared();
-            if (Items.Count == 0)
-                Task.Run(GettingContacts);
+            base.ViewCreated();
+            Task.Run(GettingContacts);
         }
+        #endregion
     }
 }

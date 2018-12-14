@@ -43,13 +43,16 @@ namespace Phonebook.Core.ViewModels.Contacts
         #endregion
 
         #region Services
-        private readonly IContactService ContactService;
+        private IContactService ContactService { get; }
+        private IUserDialogs UserDialogs { get; }
         #endregion
 
         #region Constructors
         public ContactsViewModel(IContactService contactService)
         {
             ContactService = contactService;
+            if (Mvx.IoCProvider.CanResolve<IUserDialogs>())
+                UserDialogs = Mvx.IoCProvider.Resolve<IUserDialogs>();
             Items = new MvxObservableCollection<ItemContact>();
         }
         #endregion
@@ -70,7 +73,7 @@ namespace Phonebook.Core.ViewModels.Contacts
             {
                 var result = await ContactService.GetContacts(_count, _page).ConfigureAwait(false);
                 if (result == null)
-                    Mvx.IoCProvider.Resolve<IUserDialogs>().Alert("Contact list is empty!");
+                    UserDialogs.Alert("Contact list is empty!");
                 _page++;
                 var list = new MvxObservableCollection<ItemContact>();
                 foreach (var contact in result.Contacts)
@@ -79,7 +82,7 @@ namespace Phonebook.Core.ViewModels.Contacts
             }
             catch (Exception ex)
             {
-                Mvx.IoCProvider.Resolve<IUserDialogs>().Alert(ex.Message);
+                UserDialogs.Alert(ex.Message);
             }
         }
         #endregion

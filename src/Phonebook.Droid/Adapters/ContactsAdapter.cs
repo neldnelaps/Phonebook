@@ -21,6 +21,6 @@ namespace Phonebook.Droid.Adapters
             base.OnBindViewHolder(holder, position);
             if (position >= ItemCount - 3 && GettingContactsCommandAdapter.CanExecute(null))
                 GettingContactsCommandAdapter.Execute(null);
-        } 
+        }
     }
 }

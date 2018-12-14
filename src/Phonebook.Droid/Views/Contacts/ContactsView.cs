@@ -1,7 +1,8 @@
 using Android.App;
 using Android.OS;
-
+using Android.Runtime;
 using MvvmCross.Binding.BindingContext;
+using MvvmCross.Droid.Support.V4;
 using MvvmCross.Droid.Support.V7.AppCompat;
 using MvvmCross.Droid.Support.V7.RecyclerView;
 using MvvmCross.Platforms.Android.Binding.BindingContext;

@@ -3,6 +3,8 @@ using MvvmCross.Platforms.Android.Core;
 using Phonebook.API.Service;
 using Phonebook.Core.Dialog;
 using Phonebook.Droid.Dialog;
+using System.Collections.Generic;
+using System.Reflection;
 using Xamarin.Android.Net;
 
 namespace Phonebook.Droid

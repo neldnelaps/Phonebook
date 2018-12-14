@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Specialized;
 using System.Windows.Input;
 
@@ -6,6 +7,8 @@ using Android.Views;
 using Android.Widget;
 
 using MvvmCross.Binding.BindingContext;
+using MvvmCross.Navigation;
+using MvvmCross.ViewModels;
 
 namespace Phonebook.Droid
 {
@@ -79,9 +82,15 @@ namespace Phonebook.Droid
         {
             changed.CollectionChanged += (s, e) => { var test = $"{e.Action}{e.NewItems}{e.NewStartingIndex}{e.OldItems}{e.OldStartingIndex}"; };
         }
+
         public void Include(ICommand command)
         {
             command.CanExecuteChanged += (s, e) => { if (command.CanExecute(null)) command.Execute(null); };
+        }
+
+        public void Include(MvvmCross.IoC.MvxPropertyInjector injector)
+        {
+            injector = new MvvmCross.IoC.MvxPropertyInjector();
         }
 
         public void Include(System.ComponentModel.INotifyPropertyChanged changed)
@@ -97,6 +106,24 @@ namespace Phonebook.Droid
             context.Dispose();
             var context2 = new MvxTaskBasedBindingContext();
             context2.Dispose();
+        }
+
+        public void Include(MvxNavigationService service, IMvxViewModelLoader loader)
+        {
+            service = new MvxNavigationService(null, loader);
+        }
+
+        public void Include(ConsoleColor color)
+        {
+            Console.Write("");
+            Console.WriteLine("");
+            color = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.DarkGray;
         }
     }
 }

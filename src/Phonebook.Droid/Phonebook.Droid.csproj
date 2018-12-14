@@ -157,6 +157,7 @@
     <Folder Include="Resources\drawable-xhdpi\" />
     <Folder Include="Resources\drawable-xxhdpi\" />
     <Folder Include="Resources\drawable\" />
+    <Folder Include="Views\Fragments\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-hdpi\ic_launcher.png" />
@@ -186,7 +187,7 @@
     <Compile Include="Setup.cs" />
     <Compile Include="SplashScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\Contacts\ContactsAdapter.cs" />
+    <Compile Include="Adapters\ContactsAdapter.cs" />
     <Compile Include="Views\Contacts\ContactsView.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
   </ItemGroup>

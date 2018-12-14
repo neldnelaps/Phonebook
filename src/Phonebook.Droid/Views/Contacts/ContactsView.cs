@@ -8,6 +8,7 @@ using MvvmCross.Platforms.Android.Binding.BindingContext;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
 
 using Phonebook.Core.ViewModels.Contacts;
+using Phonebook.Droid.Adapters;
 
 namespace Phonebook.Droid.Views.Contacts
 {

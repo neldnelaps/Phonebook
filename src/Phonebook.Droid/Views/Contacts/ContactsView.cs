@@ -15,21 +15,20 @@ namespace Phonebook.Droid.Views.Contacts
 {
     [MvxActivityPresentation]
     [Activity(Label = "Phonebook")]
-    public class ContactsView : MvxAppCompatActivity<ContactsViewModel>
+    public class ContactsView :  MvxAppCompatActivity<ContactsViewModel>
     {
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Contacts);
 
-            var mvxRecyclerView = FindViewById<MvxRecyclerView>(Resource.Id.mvxRecyclerView);
             var mvxRecyclerAdapter = new ContactsAdapter((IMvxAndroidBindingContext)BindingContext);
 
             var set = this.CreateBindingSet<ContactsView, ContactsViewModel>();
             set.Bind(mvxRecyclerAdapter).For(x => x.GettingContactsCommandAdapter).To(x => x.GettingContactsCommand);
             set.Apply();
 
-            mvxRecyclerView.Adapter = mvxRecyclerAdapter;
+            FindViewById<MvxRecyclerView>(Resource.Id.mvxRecyclerView).Adapter = mvxRecyclerAdapter;
         }
     }
 }

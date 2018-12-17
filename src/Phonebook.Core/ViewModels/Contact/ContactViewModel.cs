@@ -21,6 +21,11 @@ namespace Phonebook.Core.ViewModels.Contact
         public string Email => contact.Email;
         #endregion
 
+        #region Commands
+        private IMvxAsyncCommand _navigateToPhotoCommand;
+        public IMvxAsyncCommand NavigateToPhotoCommand => _navigateToPhotoCommand ?? (_navigateToPhotoCommand = new MvxAsyncCommand(NavigateToPhoto));
+        #endregion
+
         #region Services
         private IMvxNavigationService NavigationService { get; }
         #endregion
@@ -30,6 +35,10 @@ namespace Phonebook.Core.ViewModels.Contact
         {
             NavigationService = mvxNavigationService;
         }
+        #endregion
+
+        #region Private
+        private Task<bool> NavigateToPhoto() => NavigationService.Navigate<ContactImageViewModel, string>(Image);
         #endregion
 
         #region Public

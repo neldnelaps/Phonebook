@@ -1,13 +1,8 @@
-﻿using MvvmCross.Commands;
+﻿using System.Threading.Tasks;
+
+using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
-using Phonebook.API.Models;
-using Phonebook.API.Service;
-using Phonebook.Core.ViewModels.Item;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Phonebook.Core.ViewModels.Contact
 {

@@ -1,15 +1,15 @@
-﻿using MvvmCross;
-using MvvmCross.Commands;
-using MvvmCross.ViewModels;
-
-using System;
+﻿using System;
 using System.Threading.Tasks;
+
+using MvvmCross;
+using MvvmCross.Commands;
+using MvvmCross.Navigation;
+using MvvmCross.ViewModels;
 
 using Phonebook.API.Service;
 using Phonebook.Core.Dialog;
-using Phonebook.Core.ViewModels.Item;
-using MvvmCross.Navigation;
 using Phonebook.Core.ViewModels.Contact;
+using Phonebook.Core.ViewModels.Item;
 
 namespace Phonebook.Core.ViewModels.Contacts
 {
@@ -88,7 +88,7 @@ namespace Phonebook.Core.ViewModels.Contacts
             {
                 var result = await ContactService.GetContacts(_count, _page).ConfigureAwait(false);
                 if (result == null)
-                    UserDialogs.Alert("Contact list is empty!");
+                    UserDialogs.Alert("Contact list is empty!", async() => { await UpdateContacts(); });
                 _page++;
                 var list = new MvxObservableCollection<ItemContact>();
                 foreach (var contact in result.Contacts)
@@ -97,7 +97,7 @@ namespace Phonebook.Core.ViewModels.Contacts
             }
             catch (Exception ex)
             {
-                UserDialogs.Alert(ex.Message);
+                UserDialogs.Alert(ex.Message, async () => { await UpdateContacts(); });
             }
         }
         #endregion
@@ -112,7 +112,7 @@ namespace Phonebook.Core.ViewModels.Contacts
             Task.Run(GettingContacts);
         }
 
-        public  Task<bool> Transition(ItemContact item) => NavigationService.Navigate<ContactViewModel, API.Models.Contact>(item.Contact);
+        public Task<bool> Transition(ItemContact item) => NavigationService.Navigate<ContactViewModel, API.Models.Contact>(item.Contact);
         #endregion
     }
 }

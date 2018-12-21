@@ -1,10 +1,11 @@
-﻿using System;
+﻿using MvvmCross.Binding.BindingContext;
+using MvvmCross.Platforms.Ios.Views;
 
-using UIKit;
+using Phonebook.Core.ViewModels.Contact;
 
 namespace Phonebook.iOS.Views.Contact.Image
 {
-    public partial class ContactImageView : UIViewController
+    public partial class ContactImageView : MvxViewController<ContactImageViewModel>
     {
         public ContactImageView() : base("ContactImageView", null)
         {
@@ -13,13 +14,10 @@ namespace Phonebook.iOS.Views.Contact.Image
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            // Perform any additional setup after loading the view, typically from a nib.
-        }
 
-        public override void DidReceiveMemoryWarning()
-        {
-            base.DidReceiveMemoryWarning();
-            // Release any cached data, images, etc that aren't in use.
+            var set = this.CreateBindingSet<ContactImageView, ContactImageViewModel>();
+            set.Bind(Image).For(s => s.ImagePath).To(vm => vm.Image);
+            set.Apply();
         }
     }
 }

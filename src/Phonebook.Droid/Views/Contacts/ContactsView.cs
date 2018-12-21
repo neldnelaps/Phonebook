@@ -1,8 +1,7 @@
 using Android.App;
 using Android.OS;
-using Android.Runtime;
+
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.Droid.Support.V4;
 using MvvmCross.Droid.Support.V7.AppCompat;
 using MvvmCross.Droid.Support.V7.RecyclerView;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
@@ -10,6 +9,8 @@ using MvvmCross.Platforms.Android.Presenters.Attributes;
 
 using Phonebook.Core.ViewModels.Contacts;
 using Phonebook.Droid.Adapters;
+
+using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace Phonebook.Droid.Views.Contacts
 {
@@ -21,6 +22,10 @@ namespace Phonebook.Droid.Views.Contacts
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Contacts);
+
+            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            SetSupportActionBar(toolbar);
+            SupportActionBar.Title = "Contacts";
 
             var mvxRecyclerAdapter = new ContactsAdapter((IMvxAndroidBindingContext)BindingContext);
 

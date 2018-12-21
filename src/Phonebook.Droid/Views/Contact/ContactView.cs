@@ -1,15 +1,13 @@
-﻿using Android.OS;
+﻿using Android.App;
+using Android.OS;
 using Android.Views;
-using Android.Runtime;
 
-using MvvmCross.Droid.Support.V4;
 using MvvmCross.Droid.Support.V7.AppCompat;
-using MvvmCross.Platforms.Android.Binding.BindingContext;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
 
-using Phonebook.Core.ViewModels.Contacts;
 using Phonebook.Core.ViewModels.Contact;
-using Android.App;
+
+using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace Phonebook.Droid.Views.Contact
 {
@@ -21,6 +19,20 @@ namespace Phonebook.Droid.Views.Contact
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Contact);
+
+            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            SetSupportActionBar(toolbar);
+            SupportActionBar.Title = "Contact";
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            if (item.ItemId != Android.Resource.Id.Home)
+                return base.OnOptionsItemSelected(item);
+
+            Finish();
+            return true;
         }
     }
     //[MvxFragmentPresentation(ActivityHostViewModelType = typeof(ContactsViewModel), FragmentContentId = Resource.Id.contentFrame, AddToBackStack = true)]
